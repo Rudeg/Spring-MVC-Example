@@ -16,10 +16,16 @@ h1 {
     padding-top: 10px;
     margin: 0 5px;
 }
-.form-item input {
+.form-item input, select {
     display: block;
     margin-left: 20px;
 }
 .form-control {
     width: 300px;
+}
+.form-inline {
+    display: inline !important;
+}
+input.form-inline {
+    margin-right: 7px;
 }
