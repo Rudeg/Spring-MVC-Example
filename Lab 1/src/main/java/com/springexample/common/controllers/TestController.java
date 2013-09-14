@@ -41,6 +41,8 @@ public class TestController {
 
         model.addObject("programmingLanguageList", programmingLanguagesList);
         model.addObject("countryMap", country);
+        String test = "test string is here";
+        model.addObject("qwe", test);
 
         return model;
     }

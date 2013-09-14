@@ -9,12 +9,12 @@
         <link rel="stylesheet" href="css/style.css" type="text/css"/>
     </head>
     <body>
-        <h1>Spring MVC Example</h1>
+        <h1>Spring MVC Example ${qwe}</h1>
         <form:form method="post" action="registration.html">
             <fieldset>
                 <div class="form-item">
                     <form:label path="firstname">First Name: </form:label>
-                    <form:input path="firstname" class="form-control" />
+                    <form:input path="firstname" class="form-control" required="required" />
                 </div>
                 <div class="form-item">
                     <form:label path="lastname">Last Name: </form:label>
