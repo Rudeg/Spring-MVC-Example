@@ -11,7 +11,7 @@
     <h1>Success Registration!</h1>
     <p>First Name - <b>${user.firstname}</b></p>
     <p>Last Name - <b>${user.lastname}</b></p>
-    <p>Username - <b${user.username}</b></p>
+    <p>Username - <b>${user.username}</b></p>
     <p>Password - <b>${user.password}</b></p>
     <p>Sex - <b>${user.sex}</b></p>
     <p>Country - <b>${user.country}</b></p>

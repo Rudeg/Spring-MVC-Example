@@ -2,9 +2,9 @@ package com.springexample.common.model;
 
 public class User {
     private String username;
-    private String password;
     private String firstname;
     private String lastname;
+    private String password;
     private String repeatPassword;
     private SexEnum sex;
     private String [] progLang;

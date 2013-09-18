@@ -2,15 +2,12 @@ package com.springexample.common.controllers;
 
 import com.springexample.common.model.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.SimpleFormController;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -20,8 +17,9 @@ import java.util.Map;
 public class TestController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView testMethod() {
+    public ModelAndView testFormMethod() {
         ModelAndView model = new ModelAndView("index", "command", new User());
+
         //country list
         Map<String,String> country = new LinkedHashMap<String,String>();
         country.put("US", "United Stated");
@@ -48,7 +46,7 @@ public class TestController {
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public ModelAndView  registration(@ModelAttribute("index") User user, BindingResult result) {
+    public ModelAndView registration(@ModelAttribute("index") User user, BindingResult result) {
         return new ModelAndView("main","user", user);
     }
 

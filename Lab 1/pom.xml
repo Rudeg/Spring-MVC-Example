@@ -43,6 +43,13 @@
             <version>${spring.version}</version>
         </dependency>
 
+        <!--Hibernate Validation-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>5.0.1.Final</version>
+        </dependency>
+
         <!--JSP-->
         <dependency>
             <groupId>javax.servlet</groupId>

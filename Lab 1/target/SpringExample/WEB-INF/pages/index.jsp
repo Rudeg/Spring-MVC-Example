@@ -14,7 +14,7 @@
             <fieldset>
                 <div class="form-item">
                     <form:label path="firstname">First Name: </form:label>
-                    <form:input path="firstname" class="form-control" required="required" />
+                    <form:input path="firstname" class="form-control"/>
                 </div>
                 <div class="form-item">
                     <form:label path="lastname">Last Name: </form:label>
