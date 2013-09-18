@@ -20,7 +20,7 @@ public class TestController {
     public ModelAndView testFormMethod() {
         ModelAndView model = new ModelAndView("index", "command", new User());
 
-        //country list
+        //country map
         Map<String,String> country = new LinkedHashMap<String,String>();
         country.put("US", "United Stated");
         country.put("RU", "Russia");
@@ -36,11 +36,9 @@ public class TestController {
         programmingLanguagesList.add("PHP");
         programmingLanguagesList.add("Python");
         programmingLanguagesList.add("Ruby");
-
+        //add objects to model
         model.addObject("programmingLanguageList", programmingLanguagesList);
         model.addObject("countryMap", country);
-        String test = "test string is here";
-        model.addObject("qwe", test);
 
         return model;
     }
@@ -49,6 +47,4 @@ public class TestController {
     public ModelAndView registration(@ModelAttribute("index") User user, BindingResult result) {
         return new ModelAndView("main","user", user);
     }
-
-
 }

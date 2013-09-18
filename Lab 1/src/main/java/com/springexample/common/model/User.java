@@ -1,16 +1,21 @@
 package com.springexample.common.model;
 
 public class User {
+    //textboxes
     private String username;
     private String firstname;
     private String lastname;
     private String password;
     private String repeatPassword;
+    //radio button
     private SexEnum sex;
+    //checkboxes
     private String [] progLang;
-    private String country;
     private Boolean receiveNewsLetter;
+    //dropdown
+    private String country;
 
+    // getters and setters...
     public String getUsername() {
         return username;
     }
