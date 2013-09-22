@@ -1,5 +1,7 @@
 package com.springexample.common.model;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 public enum SexEnum {
     M("MEN"), W("WOMEN");
 

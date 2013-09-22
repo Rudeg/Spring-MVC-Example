@@ -1,35 +1,41 @@
 package com.springexample.common.model;
 
-import org.hibernate.validator.constraints.NotEmpty;
-import org.hibernate.validator.constraints.Range;
+import com.springexample.common.constraits.FieldMatch;
+import org.hibernate.validator.constraints.NotBlank;
 
-import java.util.ArrayList;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+@FieldMatch.List({
+        @FieldMatch(first = "password", second = "repeatPassword", message = "The password fields must match"),
+})
 
 public class User {
     //textboxes
-    @NotEmpty
+    @NotBlank
     private String username;
-    @NotEmpty
+
+    @NotBlank
     private String firstname;
-    @NotEmpty
+
+    @NotBlank
     private String lastname;
-    @Range(min=6, max=25)
+
+    @NotNull
+    @Size(min=8, max=25)
     private String password;
-    @Range(min=6, max=25)
     private String repeatPassword;
+
     //radio button
+    @NotNull
     private SexEnum sex;
     //checkboxes
     private String [] progLang;
     private Boolean receiveNewsLetter;
     //dropdown
-    @NotEmpty
+    @NotBlank
     private String country;
-
-    public User()
-    {
-        progLang = new String[0];
-    }
 
     // getters and setters...
     public String getUsername() {

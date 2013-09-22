@@ -15,28 +15,27 @@
             <fieldset>
                 <div class="form-item">
                     <form:label path="firstname">First Name: </form:label>
-                    <form:input path="firstname" class="form-control"/>
                     <form:errors path="firstname" cssClass="error"/>
+                    <form:input path="firstname" class="form-control"/>
                 </div>
                 <div class="form-item">
                     <form:label path="lastname">Last Name: </form:label>
-                    <form:input path="lastname" class="form-control" />
                     <form:errors path="lastname" cssClass="error"/>
+                    <form:input path="lastname" class="form-control" />
                 </div>
                 <div class="form-item">
                     <form:label path="username">Username: </form:label>
-                    <form:input path="username" class="form-control" />
                     <form:errors path="username" cssClass="error"/>
+                    <form:input path="username" class="form-control" />
                 </div>
                 <div class="form-item">
                     <form:label path="password">Password: </form:label>
-                    <form:password path="password" class="form-control" />
                     <form:errors path="password" cssClass="error"/>
+                    <form:password path="password" class="form-control" />
                 </div>
                 <div class="form-item">
                     <form:label path="repeatPassword">Repeat Password: </form:label>
                     <form:password path="repeatPassword" class="form-control" />
-                    <form:errors path="repeatPassword" cssClass="error"/>
                 </div>
                 <div class="form-item">
                     <form:label path="sex">Please select sex</form:label>
