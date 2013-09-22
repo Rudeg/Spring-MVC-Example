@@ -1,8 +1,10 @@
-package com.springexample.common.model;
+package com.springexample.common.model.Entity;
 
 import com.springexample.common.constraits.FieldMatch;
+import com.springexample.common.model.SexEnum;
 import org.hibernate.validator.constraints.NotBlank;
 
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -11,28 +13,45 @@ import javax.validation.constraints.Size;
         @FieldMatch(first = "password", second = "repeatPassword", message = "The password fields must match"),
 })
 
-public class User {
+@Entity
+@Table(name="users")
+public class User extends BaseEntity<Long> {
+
     //textboxes
+    @Column(nullable = false)
     @NotBlank
     private String username;
 
+    @Column(nullable = false)
     @NotBlank
     private String firstname;
 
+    @Column(nullable = false)
     @NotBlank
     private String lastname;
 
+    @Column(nullable = false)
     @NotNull
     @Size(min=8, max=25)
     private String password;
+
+    @NotNull
+    @Size(min=8, max=25)
     private String repeatPassword;
 
+    @Column(name = "sexValue", nullable = false)
+    @Enumerated(EnumType.STRING)
     //radio button
     @NotNull
     private SexEnum sex;
+
     //checkboxes
     private String [] progLang;
+
+    @Column(nullable = false)
     private Boolean receiveNewsLetter;
+
+    @Column(nullable = false)
     //dropdown
     @NotBlank
     private String country;
