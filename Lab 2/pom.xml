@@ -70,7 +70,12 @@
             <version>${spring.version}</version>
         </dependency>
 
-        <!--Hibernate Validation-->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+        <!--Hibernate-->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -87,6 +92,7 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.26</version>
         </dependency>
+
 
         <!--JSP-->
         <dependency>

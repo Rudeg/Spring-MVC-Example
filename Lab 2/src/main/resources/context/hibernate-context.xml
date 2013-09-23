@@ -21,21 +21,15 @@
         <property name="password" value="${jdbc.password}" />
     </bean>
 
-
-    <bean id="sessionFac" name="sessionFactory"
-          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="annotatedClasses">
-            <list>
-                <value>com.springexample.common.model.Entity.User</value>
-            </list>
-        </property>
+        <property name="packagesToScan" value="com.springexample.common.model.Entity" />
         <property name="hibernateProperties">
-            <value>
-                hibernate.dialect=org.hibernate.dialect.MySQL5Dialect
-                hibernate.show_sql=true
-                hibernate.hbm2ddl.auto=create
-            </value>
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+
         </property>
     </bean>
 
