@@ -7,15 +7,12 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context-3.0.xsd ">
 
-
-    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" />
-    
-    <context:component-scan base-package="com.springexample.common.controllers"/>
-
-    <mvc:resources mapping="/css/**" location="WEB-INF/resources/css/*" />
+    <context:component-scan base-package="com.springexample.common"/>
     <mvc:annotation-driven />
 
-    <context:component-scan base-package="com.springexample.common.controllers" />
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" />
+
+    <mvc:resources mapping="/css/**" location="WEB-INF/resources/css/*" />
 
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -26,7 +23,6 @@
             <value>.jsp</value>
         </property>
     </bean>
-
 
     <bean id="messageSource"
           class="org.springframework.context.support.ResourceBundleMessageSource">

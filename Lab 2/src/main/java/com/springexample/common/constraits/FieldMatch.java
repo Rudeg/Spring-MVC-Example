@@ -27,8 +27,7 @@ import java.lang.annotation.Target;
 @Retention(RUNTIME)
 @Constraint(validatedBy = FieldMatchValidator.class)
 @Documented
-public @interface FieldMatch
-{
+public @interface FieldMatch {
     String message() default "{constraints.fieldmatch}";
 
     Class<?>[] groups() default {};
@@ -53,8 +52,7 @@ public @interface FieldMatch
     @Target({TYPE, ANNOTATION_TYPE})
     @Retention(RUNTIME)
     @Documented
-    @interface List
-    {
+    @interface List {
         FieldMatch[] value();
     }
 }

@@ -1,75 +1,45 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE>
 <html>
     <head>
-        <meta charset="utf-8">
-        <title>Test page with Spring-MVC</title>
+        <title>Main Page</title>
         <link rel="stylesheet" href="css/bootstrap.css" type="text/css"/>
         <link rel="stylesheet" href="css/style.css" type="text/css"/>
     </head>
     <body>
-        <h1>Spring MVC Example</h1>
-        <form:form method="post" commandName="user" action="registration.html">
-            <form:errors path="*" cssClass="errorblock" element="div"/>
-            <fieldset>
-                <div class="form-item">
-                    <form:label path="firstname">First Name: </form:label>
-                    <form:errors path="firstname" cssClass="error"/>
-                    <form:input path="firstname" class="form-control"/>
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <div class="col-lg-10">
+                    <legend >Please Sign In</legend>
                 </div>
-                <div class="form-item">
-                    <form:label path="lastname">Last Name: </form:label>
-                    <form:errors path="lastname" cssClass="error"/>
-                    <form:input path="lastname" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="inputEmail1" class="col-lg-2 control-label">Email</label>
+                <div class="col-lg-10">
+                    <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
                 </div>
-                <div class="form-item">
-                    <form:label path="username">Username: </form:label>
-                    <form:errors path="username" cssClass="error"/>
-                    <form:input path="username" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="inputPassword1" class="col-lg-2 control-label">Password</label>
+                <div class="col-lg-10">
+                    <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
                 </div>
-                <div class="form-item">
-                    <form:label path="password">Password: </form:label>
-                    <form:errors path="password" cssClass="error"/>
-                    <form:password path="password" class="form-control" />
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Remember me
+                        </label>
+                    </div>
                 </div>
-                <div class="form-item">
-                    <form:label path="repeatPassword">Repeat Password: </form:label>
-                    <form:password path="repeatPassword" class="form-control" />
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                    <button type="submit" class="btn btn-default">Sign in</button>
+                    <a href="/registration" class="btn btn-default">Registration</a>
                 </div>
-                <div class="form-item">
-                    <form:label path="sex">Please select sex</form:label>
-                    <p>
-                        <form:radiobutton path="sex" value="M" class="form-inline"/> Male
-                        <form:radiobutton path="sex" value="W" class="form-inline"/> Female
-                    </p>
-                </div>
-                <div class="form-item">
-                    <form:label path="country">Please select country:</form:label>
-                    <form:errors path="country" cssClass="error"/>
-                    <p>
-                        <form:select path="country" class="form-control">
-                            <form:option  value="" label="-"/> Female
-                            <form:options items="${countryMap}" />
-                        </form:select>
-                    </p>
-                </div>
-                <div class="form-item">
-                    <form:label path="progLang">Please select programming languages:</form:label>
-                    <p>
-                        <form:checkboxes path="progLang" items="${programmingLanguageList}" class="form-inline"/>
-                    </p>
-                </div>
-                <div class="form-item">
-                    <form:label path="receiveNewsLetter">Receive Newsletter?</form:label>
-                    <form:checkbox path="receiveNewsLetter"/>
-                </div>
-                <div class="form-item">
-                    <input class="btn btn-default" type="submit" value="Registration"/>
-                 </div>
-            </fieldset>
-
-        </form:form>
-
+            </div>
+        </form>
     </body>
 </html>
