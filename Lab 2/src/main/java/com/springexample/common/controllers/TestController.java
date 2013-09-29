@@ -23,11 +23,10 @@ public class TestController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public ModelAndView testFormMethod() {
-        ModelAndView model = new ModelAndView("index", "user", new User());
-        //TODO:test, remove it
-        User user = userService.getById(1L);
+        ModelAndView model = new ModelAndView("registration", "user", new User());
+
         return FillSignUpModelAndView(model);
     }
 
@@ -39,7 +38,7 @@ public class TestController {
             m.addObject("programmingLanguageList", initProgramLang());
             m.addObject("countryMap", initCountry());
 
-            return "index";
+            return "registration";
         }
         userService.saveUser(user);
         return "main";

@@ -39,3 +39,11 @@ input.form-inline {
     padding: 8px;
     margin: 16px;
 }
+
+form.form-horizontal {
+    margin-top: 250px;
+}
+
+input.registration {
+    display: inline;
+}
