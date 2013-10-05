@@ -45,6 +45,9 @@ public class RegistrationController {
             return "registration";
         }
         userService.saveUser(user);
+
+        m.addAttribute("username", user.getUsername());
+
         return "main";
     }
 

@@ -8,13 +8,10 @@
        http://www.springframework.org/schema/security/spring-security.xsd">
 
     <security:http use-expressions="true">
-        <security:intercept-url pattern="/WEB-INF" access="permitAll"/>
-        <security:intercept-url pattern="/index.jsp" access="permitAll" />
-        <security:intercept-url pattern="/secure/extreme/**" access="hasRole('supervisor')" />
         <security:intercept-url pattern="/main" access="isAuthenticated()" />
-        <security:intercept-url pattern="/**" access="denyAll" />
-        <security:form-login  default-target-url="/main"/>
-        <security:logout/>
+        <security:form-login login-page="/login" default-target-url="/main"
+                             authentication-failure-url="/loginfailed"/>
+        <security:logout logout-success-url="/logout"/>
     </security:http>
 
     <security:authentication-manager>
