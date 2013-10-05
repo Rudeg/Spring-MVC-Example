@@ -7,6 +7,8 @@
        http://www.springframework.org/schema/security
        http://www.springframework.org/schema/security/spring-security.xsd">
 
+    <bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder"/>
+
     <security:http use-expressions="true">
         <security:intercept-url pattern="/WEB-INF" access="permitAll"/>
         <security:intercept-url pattern="/index.jsp" access="permitAll" />
@@ -19,9 +21,19 @@
 
     <security:authentication-manager>
         <security:authentication-provider>
-            <security:user-service>
-                    <security:user name="admin" password="admin" authorities="supervisor, user"/>
-            </security:user-service>
+            <security:password-encoder ref="passwordEncoder">
+                <security:salt-source user-property="username"/>
+            </security:password-encoder>
+
+            <security:jdbc-user-service data-source-ref="dataSource"
+                                        users-by-username-query="
+		    SELECT username, password, enabled FROM users WHERE username=?"
+
+                                        authorities-by-username-query="
+            SELECT users.username AS username, user_roles.authority AS authority FROM users, ex_user_role, user_roles
+            WHERE users.user_id = ex_user_role.user_id AND user_roles.role_id = ex_user_role.role_id
+            AND users.username = ?" />
+
         </security:authentication-provider>
     </security:authentication-manager>
 </beans>
