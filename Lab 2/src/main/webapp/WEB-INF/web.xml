@@ -15,6 +15,7 @@
         <param-value>
             classpath:context/dispatcher-servlet.xml
             classpath:context/hibernate-context.xml
+            classpath:context/security-app-context.xml
         </param-value>
     </context-param>
 
