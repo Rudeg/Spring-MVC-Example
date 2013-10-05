@@ -11,17 +11,16 @@
         <security:intercept-url pattern="/WEB-INF" access="permitAll"/>
         <security:intercept-url pattern="/index.jsp" access="permitAll" />
         <security:intercept-url pattern="/secure/extreme/**" access="hasRole('supervisor')" />
-        <security:intercept-url pattern="/secure/**" access="isAuthenticated()" />
-        <security:intercept-url pattern="/post.html" access="hasAnyRole('supervisor','teller')" />
+        <security:intercept-url pattern="/main" access="isAuthenticated()" />
         <security:intercept-url pattern="/**" access="denyAll" />
-        <security:form-login/>
+        <security:form-login  default-target-url="/main"/>
         <security:logout/>
     </security:http>
 
     <security:authentication-manager>
         <security:authentication-provider>
             <security:user-service>
-                <security:user name="admin" password="admin" authorities="supervisor, user"/>
+                    <security:user name="admin" password="admin" authorities="supervisor, user"/>
             </security:user-service>
         </security:authentication-provider>
     </security:authentication-manager>

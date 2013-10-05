@@ -14,15 +14,15 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputEmail1" class="col-lg-2 control-label">Email</label>
+                <label for="username" class="col-lg-2 control-label">Username</label>
                 <div class="col-lg-10">
-                    <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
+                    <input type="text" class="form-control" id="username" placeholder="Username">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputPassword1" class="col-lg-2 control-label">Password</label>
+                <label for="password" class="col-lg-2 control-label">Password</label>
                 <div class="col-lg-10">
-                    <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+                    <input type="password" class="form-control" id="password" placeholder="Password">
                 </div>
             </div>
             <div class="form-group">

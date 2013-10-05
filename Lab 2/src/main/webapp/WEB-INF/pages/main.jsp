@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="css/style.css" type="text/css"/>
     </head>
     <body>
+        <h1>Login is here, welcome</h1>
+    <!--
         <h1>Success Registration!</h1>
         <p>First Name - <b>${user.firstname}</b></p>
         <p>Last Name - <b>${user.lastname}</b></p>
@@ -19,5 +21,6 @@
                 <b><c:out value="${lang}" />, </b>
             </c:forEach> </p>
         <p>Receive newsletters status - <b>${user.receiveNewsLetter}</b></p>
+    -->
     </body>
 </html>
