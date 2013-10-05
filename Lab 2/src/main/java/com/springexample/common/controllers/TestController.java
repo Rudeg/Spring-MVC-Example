@@ -6,6 +6,7 @@ import javax.validation.Valid;
 import com.springexample.common.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,12 +32,12 @@ public class TestController {
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, ModelAndView m) {
+    public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model m) {
         if (result.hasErrors()) {
 
             //add objects to model
-            m.addObject("programmingLanguageList", initProgramLang());
-            m.addObject("countryMap", initCountry());
+            m.addAttribute("programmingLanguageList", initProgramLang());
+            m.addAttribute("countryMap", initCountry());
 
             return "registration";
         }
@@ -46,7 +47,7 @@ public class TestController {
 
     private ModelAndView FillSignUpModelAndView(ModelAndView model) {
         //add objects to model
-        model.addObject("programmingLanguageList", initProgramLang());
+        model.addObject("programmingLanguageList", initProgramLang().toArray());
         model.addObject("countryMap", initCountry());
 
         return model;
