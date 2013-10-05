@@ -7,8 +7,8 @@
        http://www.springframework.org/schema/security
        http://www.springframework.org/schema/security/spring-security.xsd">
 
-    <security:http use-expressions="true">
-        <security:intercept-url pattern="/main" access="isAuthenticated()" />
+    <security:http auto-config="true">
+        <security:intercept-url pattern="/main" access="ROLE_ADMIN,ROLE_USER" />
         <security:form-login login-page="/login" default-target-url="/main"
                              authentication-failure-url="/loginfailed"/>
         <security:logout logout-success-url="/logout"/>
@@ -16,9 +16,14 @@
 
     <security:authentication-manager>
         <security:authentication-provider>
-            <security:user-service>
-                <security:user name="admin" password="admin" authorities="supervisor, user"/>
-            </security:user-service>
+            <security:jdbc-user-service data-source-ref="dataSource"
+
+                               users-by-username-query="select username,password,'true' from users where username=?"
+
+                               authorities-by-username-query="
+		      select u.username, ur.authority from users u, user_roles ur
+		      where u.id = ur.id and u.username =?"
+        />
         </security:authentication-provider>
     </security:authentication-manager>
 </beans>
