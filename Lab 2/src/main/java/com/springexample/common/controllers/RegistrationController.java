@@ -19,16 +19,19 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class TestController {
+public class RegistrationController {
 
     @Autowired
     private UserService userService;
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public ModelAndView testFormMethod() {
+    public ModelAndView registration() {
         ModelAndView model = new ModelAndView("registration", "user", new User());
 
-        return FillSignUpModelAndView(model);
+        model.addObject("programmingLanguageList", initProgramLang());
+        model.addObject("countryMap", initCountry());
+
+        return model;
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
@@ -43,14 +46,6 @@ public class TestController {
         }
         userService.saveUser(user);
         return "main";
-    }
-
-    private ModelAndView FillSignUpModelAndView(ModelAndView model) {
-        //add objects to model
-        model.addObject("programmingLanguageList", initProgramLang().toArray());
-        model.addObject("countryMap", initCountry());
-
-        return model;
     }
 
     private List<String> initProgramLang() {
@@ -76,10 +71,5 @@ public class TestController {
         country.put("UA", "Ukraine");
 
         return country;
-    }
-
-    @ModelAttribute("user")
-    public User createModel() {
-        return new User();
     }
 }
