@@ -31,8 +31,7 @@ public class DatabasePasswordSecurerBean extends JdbcDaoSupport {
     }
 
     //Test Secure password method for new user
-    public  String secureUser(User user) {
-        String encodedPassword = passwordEncoder.encodePassword(user.getPassword(), user.getUsername());
-        return encodedPassword;
+    public  String secureUser(User user, String password) {
+        return passwordEncoder.encodePassword(password, user.getUsername());
     }
 }

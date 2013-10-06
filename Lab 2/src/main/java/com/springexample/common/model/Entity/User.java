@@ -30,14 +30,18 @@ public class User extends BaseEntity<Long> {
     @NotBlank
     private String lastname;
 
-    @Column(nullable = false)
     @NotNull
     @Size(min=8, max=25)
-    private String password;
+    @Transient
+    private transient String password;
 
     @NotNull
     @Size(min=8, max=25)
-    private String repeatPassword;
+    @Transient
+    private transient String repeatPassword;
+
+    @Column(nullable = false)
+    private String passwordHash;
 
     @Column(name = "sexValue", nullable = false)
     @Enumerated(EnumType.STRING)
@@ -140,5 +144,13 @@ public class User extends BaseEntity<Long> {
 
     public void setUserRoles(Set<Role> userRoles) {
         this.userRoles = userRoles;
+    }
+
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
 }
