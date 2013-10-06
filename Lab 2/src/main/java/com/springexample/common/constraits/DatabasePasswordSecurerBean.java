@@ -15,15 +15,15 @@ public class DatabasePasswordSecurerBean extends JdbcDaoSupport {
     private PasswordEncoder passwordEncoder;
 
     public void secureDatabase() {
-        getJdbcTemplate().query("select username, password from users",
+        getJdbcTemplate().query("select username, passwordHash from users",
                 new RowCallbackHandler(){
                     @Override
                     public void processRow(ResultSet rs) throws SQLException {
-                        String username = rs.getString(1);
-                        String password = rs.getString(2);
+                        String username = rs.getString(0);
+                        String password = rs.getString(1);
                         String encodedPassword =
                                 passwordEncoder.encodePassword(password, username);
-                        getJdbcTemplate().update("update users set password = ? where username = ?", encodedPassword, username);
+                        getJdbcTemplate().update("update users set passwordHash = ? where username = ?", encodedPassword, username);
                         System.out.println("Updating password for username:"+username+" to: "+encodedPassword);
                         logger.debug("Updating password for username:" + username + " to: " + encodedPassword);
                     }
