@@ -1,5 +1,6 @@
 package com.springexample.common.controllers;
 
+import com.springexample.common.constraits.DatabasePasswordSecurerBean;
 import com.springexample.common.model.Entity.Role;
 import com.springexample.common.model.Entity.User;
 import javax.validation.Valid;
@@ -26,6 +27,9 @@ public class RegistrationController {
     @Autowired
     private RoleService roleService;
 
+    @Autowired
+    private DatabasePasswordSecurerBean databasePasswordSecurerBean;
+
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public ModelAndView registration() {
         ModelAndView model = new ModelAndView("registration", "user", new User());
@@ -51,6 +55,7 @@ public class RegistrationController {
         roles.add(userRole);
 
         user.setUserRoles(roles);
+        user.setPassword(databasePasswordSecurerBean.secureUser(user));
         userService.saveUser(user);
 
         m.addAttribute("username", user.getUsername());
