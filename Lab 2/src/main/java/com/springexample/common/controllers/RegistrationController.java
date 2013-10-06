@@ -1,8 +1,10 @@
 package com.springexample.common.controllers;
 
+import com.springexample.common.model.Entity.Role;
 import com.springexample.common.model.Entity.User;
 import javax.validation.Valid;
 
+import com.springexample.common.service.RoleService;
 import com.springexample.common.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,16 +15,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class RegistrationController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RoleService roleService;
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public ModelAndView registration() {
@@ -44,6 +46,11 @@ public class RegistrationController {
 
             return "registration";
         }
+        Role userRole = roleService.getById(2L); //ROLE_USER
+        Set<Role> roles = new HashSet<Role>();
+        roles.add(userRole);
+
+        user.setUserRoles(roles);
         userService.saveUser(user);
 
         m.addAttribute("username", user.getUsername());
