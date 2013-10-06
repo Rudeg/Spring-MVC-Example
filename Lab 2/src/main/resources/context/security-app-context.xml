@@ -25,7 +25,7 @@
         <security:authentication-provider>
             <security:jdbc-user-service data-source-ref="dataSource"
 
-                               users-by-username-query="select username,password,'true' from users where username=?"
+                               users-by-username-query="select username,passwordHash,'true' from users where username=?"
 
                                authorities-by-username-query="
 		      select u.username, ur.authority from users u, user_roles ur
