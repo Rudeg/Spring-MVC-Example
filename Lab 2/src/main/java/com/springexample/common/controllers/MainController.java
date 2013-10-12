@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import java.math.BigInteger;
 
 import java.security.Principal;
 
@@ -23,4 +24,15 @@ public class MainController {
 
         return model;
     }
+
+    @RequestMapping(value = "/addPost", method = RequestMethod.GET)
+    public ModelAndView addPost(Principal principal) {
+        ModelAndView model = new ModelAndView("addPost");
+        String name = principal.getName();
+        model.addObject("username", name);
+
+        return model;
+    }
+
+
 }

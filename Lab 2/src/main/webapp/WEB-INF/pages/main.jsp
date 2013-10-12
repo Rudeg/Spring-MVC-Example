@@ -7,24 +7,31 @@
         <link rel="stylesheet" href="css/bootstrap.css" type="text/css"/>
         <link rel="stylesheet" href="css/style.css" type="text/css"/>
     </head>
+
     <body>
-        <h1>Login is here, welcome</h1>
-        <h3>Username : ${username}</h3>
-
-        <!--
-            <h1>Success Registration!</h1>
-            <p>First Name - <b>${user.firstname}</b></p>
-            <p>Last Name - <b>${user.lastname}</b></p>
-            <p>Username - <b>${user.username}</b></p>
-            <p>Password - <b>${user.password}</b></p>
-            <p>Sex - <b>${user.sex}</b></p>
-            <p>Country - <b>${user.country}</b></p>
-            <p>Programming Languages - <c:forEach items="${user.progLang}" var="lang">
-                    <b><c:out value="${lang}" />, </b>
-                </c:forEach> </p>
-            <p>Receive newsletters status - <b>${user.receiveNewsLetter}</b></p>
-        -->
-        <a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
-
+        <div class="header">
+            <h1>Welcome, ${username}</h1>
+            <a class="btn btn-warning" href="<c:url value="/j_spring_security_logout" />">Logout</a>
+            <a class="btn btn-success" href="/addPost">Add new Post</a>
+        </div>
+        <br/>
+        <div class="post">
+            <h2 class="featurette-heading">First featurette heading.</h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            <p>Comments: <span class="post-author">Written by user</span></p>
+            <hr/>
+        </div>
+        <div class="post">
+            <h2 class="featurette-heading">First featurette heading.</h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            <p>Comments: <span class="post-author">Written by user</span></p>
+            <hr/>
+        </div>
+        <div class="post">
+            <h2 class="featurette-heading">First featurette heading.</h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            <p>Comments: <span class="post-author">Written by user</span></p>
+            <hr/>
+        </div>
     </body>
 </html>
