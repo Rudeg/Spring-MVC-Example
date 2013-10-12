@@ -21,7 +21,7 @@
             </div>
         </c:if>
 
-        <form action="" method='POST'>
+        <form action="/addPost" method='POST'>
             <div class="form-group">
                 <div class="">
                     <legend >Add new post</legend>

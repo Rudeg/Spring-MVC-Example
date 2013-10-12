@@ -32,16 +32,13 @@ public class User extends BaseEntity<Long> {
 
     @NotNull
     @Size(min=8, max=25)
-    @Transient
+    @Column(nullable = false)
     private transient String password;
 
     @NotNull
     @Size(min=8, max=25)
     @Transient
     private transient String repeatPassword;
-
-    @Column(nullable = false)
-    private String passwordHash;
 
     @Column(name = "sexValue", nullable = false)
     @Enumerated(EnumType.STRING)
@@ -64,6 +61,11 @@ public class User extends BaseEntity<Long> {
     @JoinTable(name = "ex_user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> userRoles;
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private Set<Post> posts;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private Set<Comment> comments;
 
     // getters and setters...
     public String getUsername() {
@@ -146,11 +148,19 @@ public class User extends BaseEntity<Long> {
         this.userRoles = userRoles;
     }
 
-    public String getPasswordHash() {
-        return passwordHash;
+    public Set<Post> getPosts() {
+        return posts;
     }
 
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
+    public void setPosts(Set<Post> posts) {
+        this.posts = posts;
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
     }
 }
