@@ -1,17 +1,11 @@
 package com.springexample.common.model.Entity;
 
-import com.springexample.common.constraits.FieldMatch;
 import com.springexample.common.model.SexEnum;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.Set;
-
-@FieldMatch.List({
-        @FieldMatch(first = "password", second = "repeatPassword", message = "The password fields must match"),
-})
 
 @Entity
 @Table(name="users")
@@ -29,16 +23,6 @@ public class User extends BaseEntity<Long> {
     @Column(nullable = false)
     @NotBlank
     private String lastname;
-
-    @NotNull
-    @Size(min=8, max=25)
-    @Column(nullable = false)
-    private transient String password;
-
-    @NotNull
-    @Size(min=8, max=25)
-    @Transient
-    private transient String repeatPassword;
 
     @Column(name = "sexValue", nullable = false)
     @Enumerated(EnumType.STRING)
@@ -76,14 +60,6 @@ public class User extends BaseEntity<Long> {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getFirstname() {
         return firstname;
     }
@@ -98,14 +74,6 @@ public class User extends BaseEntity<Long> {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
-    }
-
-    public String getRepeatPassword() {
-        return repeatPassword;
-    }
-
-    public void setRepeatPassword(String repeatPassword) {
-        this.repeatPassword = repeatPassword;
     }
 
     public SexEnum getSex() {
