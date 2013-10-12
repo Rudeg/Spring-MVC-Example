@@ -3,6 +3,8 @@ package com.springexample.common.model.Entity;
 import com.springexample.common.constraits.FieldMatch;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -11,11 +13,13 @@ import javax.validation.constraints.Size;
         @FieldMatch(first = "password", second = "repeatPassword", message = "The password fields must match"),
 })
 
+@Entity
+@Table(name="users")
 public class RegistrationUser extends User {
 
     @NotNull
     @Size(min=8, max=25)
-    @Column(nullable = false)
+    @Transient
     private transient String password;
 
     @NotNull

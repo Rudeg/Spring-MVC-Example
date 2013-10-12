@@ -56,8 +56,8 @@ public class RegistrationController {
         roles.add(userRole);
 
         user.setUserRoles(roles);
-        user.setPassword(databasePasswordSecurerBean.secureUser(user, user.getPassword()));
-        userService.saveUser(user);
+        user.setPasswordHash(databasePasswordSecurerBean.secureUser(user, user.getPassword()));
+        userService.saveUser((User)user);
 
         m.addAttribute("username", user.getUsername());
 

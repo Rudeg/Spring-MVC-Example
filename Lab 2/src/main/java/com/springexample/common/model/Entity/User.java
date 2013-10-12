@@ -24,6 +24,9 @@ public class User extends BaseEntity<Long> {
     @NotBlank
     private String lastname;
 
+    @Column(nullable =  false)
+    private String passwordHash;
+
     @Column(name = "sexValue", nullable = false)
     @Enumerated(EnumType.STRING)
     //radio button
@@ -130,5 +133,13 @@ public class User extends BaseEntity<Long> {
 
     public void setComments(Set<Comment> comments) {
         this.comments = comments;
+    }
+
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
 }
