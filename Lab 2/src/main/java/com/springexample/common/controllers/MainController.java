@@ -43,9 +43,9 @@ public class MainController {
 
     @RequestMapping(value = "/addPost", method = RequestMethod.GET)
     public ModelAndView addPost(Principal principal) {
+        String name = principal.getName();
 
         ModelAndView model = new ModelAndView("addPost", "post", new Post());
-        String name = principal.getName();
         model.addObject("username", name);
 
         return model;
