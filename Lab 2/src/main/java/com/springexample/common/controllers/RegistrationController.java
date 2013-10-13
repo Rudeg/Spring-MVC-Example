@@ -54,9 +54,21 @@ public class RegistrationController {
         Set<Role> roles = new HashSet<Role>();
         roles.add(userRole);
 
-        user.setUserRoles(roles);
-        user.setPasswordHash(databasePasswordSecurerBean.secureUser(user, user.getPassword()));
-        userService.saveUser((User)user);
+        User u = new User();
+        u.setPasswordHash(databasePasswordSecurerBean.secureUser(user, user.getPassword()));
+        u.setComments(user.getComments());
+        u.setCountry(user.getCountry());
+        u.setFirstname(user.getFirstname());
+        u.setLastname(user.getLastname());
+        u.setPosts(user.getPosts());
+        u.setProgLang(user.getProgLang());
+        u.setReceiveNewsLetter(user.getReceiveNewsLetter());
+        u.setSex(user.getSex());
+        u.setUsername(user.getUsername());
+        u.setId(user.getId());
+
+        u.setUserRoles(roles);
+        userService.saveUser(u);
 
         m.addAttribute("username", user.getUsername());
 
