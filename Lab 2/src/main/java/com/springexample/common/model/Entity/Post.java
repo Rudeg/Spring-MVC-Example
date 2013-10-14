@@ -16,7 +16,7 @@ public class Post extends BaseEntity<Long> {
     @ManyToOne()
     private User user;
 
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "post", fetch = FetchType.EAGER)
     private Set<Comment> comments;
 
     //Constructors

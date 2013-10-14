@@ -2,7 +2,10 @@ package com.springexample.common.dao.Impl;
 
 import com.springexample.common.dao.PostDao;
 import com.springexample.common.model.Entity.Post;
+import org.hibernate.Criteria;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class PostDaoImpl extends AbstractDaoImpl<Post, String> implements PostDao {
@@ -19,5 +22,11 @@ public class PostDaoImpl extends AbstractDaoImpl<Post, String> implements PostDa
     @Override
     public Post getByID(Long id) {
         return (Post)getCurrentSession().get(Post.class, id);
+    }
+
+    @Override
+    public List<Post> loadAllPost() {
+        Criteria criteria = getCurrentSession().createCriteria(Post.class);
+        return criteria.list();
     }
 }

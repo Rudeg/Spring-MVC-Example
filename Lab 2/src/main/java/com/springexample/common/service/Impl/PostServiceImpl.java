@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service("postService")
 @Transactional(readOnly = true)
 public class PostServiceImpl implements PostService {
@@ -23,5 +25,10 @@ public class PostServiceImpl implements PostService {
     @Override
     public Post getById(Long id) {
         return postDao.getByID(id);
+    }
+
+    @Override
+    public List<Post> findAll() {
+        return postDao.loadAllPost();
     }
 }

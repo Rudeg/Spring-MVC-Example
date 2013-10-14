@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE>
 <html>
     <head>
@@ -15,23 +16,13 @@
             <a class="btn btn-success" href="/addPost">Add new Post</a>
         </div>
         <br/>
-        <div class="post">
-            <h2 class="featurette-heading">First featurette heading.</h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-            <p>Comments: <span class="post-author">Written by user</span></p>
-            <hr/>
-        </div>
-        <div class="post">
-            <h2 class="featurette-heading">First featurette heading.</h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-            <p>Comments: <span class="post-author">Written by user</span></p>
-            <hr/>
-        </div>
-        <div class="post">
-            <h2 class="featurette-heading">First featurette heading.</h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-            <p>Comments: <span class="post-author">Written by user</span></p>
-            <hr/>
-        </div>
+        <c:forEach items="${posts}" var="item">
+            <div class="post">
+                <h2 class="featurette-heading">${item.title}</h2>
+                <p class="lead">${item.text}</p>
+                <p>Comments:${fn:length(item.comments)}<span class="post-author">Written by ${item.user.username}</span></p>
+                <hr/>
+            </div>
+        </c:forEach>
     </body>
 </html>

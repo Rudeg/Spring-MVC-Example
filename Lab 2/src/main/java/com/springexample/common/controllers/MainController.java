@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -38,14 +39,18 @@ public class MainController {
         String name = principal.getName();
         model.addObject("username", name);
 
+        List<Post> postList = postService.findAll();
+        if(postList != null)
+            model.addObject("posts", postList);
+
         return model;
     }
 
     @RequestMapping(value = "/addPost", method = RequestMethod.GET)
     public ModelAndView addPost(Principal principal) {
-        String name = principal.getName();
 
         ModelAndView model = new ModelAndView("addPost", "post", new Post());
+        String name = principal.getName();
         model.addObject("username", name);
 
         return model;
@@ -69,7 +74,7 @@ public class MainController {
         userService.saveUser(user);
         postService.savePost(post);
 
-        return "main";
+        return "redirect:/main";
     }
 
 
