@@ -1,6 +1,7 @@
 package com.springexample.common.controllers;
 
 import com.springexample.common.constraits.DatabasePasswordSecurerBean;
+import com.springexample.common.model.Entity.RegistrationUser;
 import com.springexample.common.model.Entity.Role;
 import com.springexample.common.model.Entity.User;
 import javax.validation.Valid;
@@ -32,7 +33,7 @@ public class RegistrationController {
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public ModelAndView registration() {
-        ModelAndView model = new ModelAndView("registration", "user", new User());
+        ModelAndView model = new ModelAndView("registration", "user", new RegistrationUser());
 
         model.addObject("programmingLanguageList", initProgramLang());
         model.addObject("countryMap", initCountry());
@@ -41,7 +42,7 @@ public class RegistrationController {
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model m) {
+    public String registration(@Valid @ModelAttribute("user") RegistrationUser user, BindingResult result, Model m) {
         if (result.hasErrors()) {
 
             //add objects to model
@@ -72,7 +73,7 @@ public class RegistrationController {
 
         m.addAttribute("username", user.getUsername());
 
-        return "main";
+        return "redirect:login";
     }
 
     private List<String> initProgramLang() {
