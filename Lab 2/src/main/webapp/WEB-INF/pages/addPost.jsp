@@ -23,21 +23,15 @@
 
         <form action="/addPost" method='POST'>
             <div class="form-group">
-                <div class="">
-                    <legend >Add new post</legend>
-                </div>
+                <legend >Add new post</legend>
             </div>
             <div class="form-group">
                 <label for="title" class="control-label">Title</label>
-                <div class="">
-                    <input type="text" class="form-control add-post" name="title" id="title" placeholder="Title">
-                </div>
+                <input type="text" class="form-control add-post" name="title" id="title" placeholder="Title">
             </div>
             <div class="form-group">
                 <label for="text" class="control-label">Text</label>
-                <div class="">
-                    <textarea name="text" class="form-control add-post" id="text" placeholder="Text" ></textarea>
-                </div>
+                <textarea name="text" class="form-control add-post" id="text" placeholder="Text" ></textarea>
             </div>
             <br/>
             <div class="form-group">

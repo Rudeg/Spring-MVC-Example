@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service("commentService")
 @Transactional(readOnly = true)
 public class CommentServiceImpl implements CommentService {
@@ -23,5 +25,10 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public Comment getById(Long id) {
         return commentDao.getByID(id);
+    }
+
+    @Override
+    public List<Comment> findAll() {
+        return commentDao.loadAllComments();
     }
 }

@@ -18,7 +18,7 @@
         <br/>
         <c:forEach items="${posts}" var="item">
             <div class="post">
-                <h2 class="featurette-heading">${item.title}</h2>
+                <h2 class="featurette-heading"><a href="/post/${item.id}">${item.title}</a></h2>
                 <p class="lead">${item.text}</p>
                 <p>Comments:${fn:length(item.comments)}<span class="post-author">Written by ${item.user.username}</span></p>
                 <hr/>

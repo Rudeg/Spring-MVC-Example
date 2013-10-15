@@ -1,17 +1,16 @@
 package com.springexample.common.controllers;
 
+import com.springexample.common.model.Entity.Comment;
 import com.springexample.common.model.Entity.Post;
 import com.springexample.common.model.Entity.User;
+import com.springexample.common.service.CommentService;
 import com.springexample.common.service.PostService;
 import com.springexample.common.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
@@ -27,6 +26,9 @@ public class MainController {
 
     @Autowired
     private PostService postService;
+
+    @Autowired
+    private CommentService commentService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String mainPage() {
@@ -56,8 +58,49 @@ public class MainController {
         return model;
     }
 
+    @RequestMapping(value = "/addComment", method = RequestMethod.POST)
+    public String addComment( @ModelAttribute("comment") Comment comment,
+                           @RequestParam(required = false, value = "postId") String postId,
+                           Model m, Principal principal) {
+        String name = principal.getName();
+        m.addAttribute("username", name);
+        //set user to post
+        User user = userService.findByUserName(name);
+        comment.setUser(user);
+        //update user posts
+        Post post = postService.getById(Long.parseLong(postId));
+        comment.setPost(post);
+
+        Set<Comment> postComments = post.getComments();
+        if(postComments == null) {
+            postComments = new HashSet<Comment>();
+        }
+        postComments.add(comment);
+        post.setComments(postComments);
+
+        commentService.saveComment(comment);
+        postService.savePost(post);
+
+        return "redirect:/post/" + post.getId();
+    }
+
+
+    @RequestMapping(value = "/post/{id}", method = RequestMethod.GET)
+    public ModelAndView post(@PathVariable String id, Principal principal) {
+        ModelAndView model = new ModelAndView("post");
+        String name = principal.getName();
+        model.addObject("username", name);
+
+        Post post = postService.getById(Long.parseLong(id));
+        if(post != null) {
+            model.addObject("post", post);
+        }
+
+        return model;
+    }
+
     @RequestMapping(value = "/addPost", method = RequestMethod.POST)
-    public String registration( @ModelAttribute("post") Post post, BindingResult result, Model m, Principal principal) {
+    public String addComment( @ModelAttribute("post") Post post, BindingResult result, Model m, Principal principal) {
         String name = principal.getName();
         m.addAttribute("username", name);
         //set user to post
@@ -76,6 +119,7 @@ public class MainController {
 
         return "redirect:/main";
     }
+
 
 
 }
