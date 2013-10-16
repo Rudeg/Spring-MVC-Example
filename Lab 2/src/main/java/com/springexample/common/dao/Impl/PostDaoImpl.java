@@ -27,6 +27,7 @@ public class PostDaoImpl extends AbstractDaoImpl<Post, String> implements PostDa
     @Override
     public List<Post> loadAllPost() {
         Criteria criteria = getCurrentSession().createCriteria(Post.class);
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return criteria.list();
     }
 }
