@@ -39,3 +39,24 @@ input.form-inline {
     padding: 8px;
     margin: 16px;
 }
+
+form.form-horizontal {
+    margin-top: 250px;
+}
+input.registration {
+    display: inline;
+}
+.header h1 {
+    display: inline-block;
+}
+.header a {
+    float: right;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+.post-author {
+    float: right;
+}
+.form-control.add-post {
+    width: 500px;
+}

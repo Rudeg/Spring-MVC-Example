@@ -1,76 +1,44 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE>
 <html>
     <head>
-        <meta charset="utf-8">
-        <title>Test page with Spring-MVC</title>
+        <title>Main Page</title>
         <link rel="stylesheet" href="css/bootstrap.css" type="text/css"/>
         <link rel="stylesheet" href="css/style.css" type="text/css"/>
     </head>
     <body>
-        <h1>Spring MVC Example</h1>
-        <form:form method="post" commandName="user" action="registration.html">
-            <form:errors path="*" cssClass="errorblock" element="div"/>
-            <fieldset>
-                <div class="form-item">
-                    <form:label path="firstname">First Name: </form:label>
-                    <form:input path="firstname" class="form-control"/>
-                    <form:errors path="firstname" cssClass="error"/>
-                </div>
-                <div class="form-item">
-                    <form:label path="lastname">Last Name: </form:label>
-                    <form:input path="lastname" class="form-control" />
-                    <form:errors path="lastname" cssClass="error"/>
-                </div>
-                <div class="form-item">
-                    <form:label path="username">Username: </form:label>
-                    <form:input path="username" class="form-control" />
-                    <form:errors path="username" cssClass="error"/>
-                </div>
-                <div class="form-item">
-                    <form:label path="password">Password: </form:label>
-                    <form:password path="password" class="form-control" />
-                    <form:errors path="password" cssClass="error"/>
-                </div>
-                <div class="form-item">
-                    <form:label path="repeatPassword">Repeat Password: </form:label>
-                    <form:password path="repeatPassword" class="form-control" />
-                    <form:errors path="repeatPassword" cssClass="error"/>
-                </div>
-                <div class="form-item">
-                    <form:label path="sex">Please select sex</form:label>
-                    <p>
-                        <form:radiobutton path="sex" value="M" class="form-inline"/> Male
-                        <form:radiobutton path="sex" value="W" class="form-inline"/> Female
-                    </p>
-                </div>
-                <div class="form-item">
-                    <form:label path="country">Please select country:</form:label>
-                    <form:errors path="country" cssClass="error"/>
-                    <p>
-                        <form:select path="country" class="form-control">
-                            <form:option  value="" label="-"/> Female
-                            <form:options items="${countryMap}" />
-                        </form:select>
-                    </p>
-                </div>
-                <div class="form-item">
-                    <form:label path="progLang">Please select programming languages:</form:label>
-                    <p>
-                        <form:checkboxes path="progLang" items="${programmingLanguageList}" class="form-inline"/>
-                    </p>
-                </div>
-                <div class="form-item">
-                    <form:label path="receiveNewsLetter">Receive Newsletter?</form:label>
-                    <form:checkbox path="receiveNewsLetter"/>
-                </div>
-                <div class="form-item">
-                    <input class="btn btn-default" type="submit" value="Registration"/>
-                 </div>
-            </fieldset>
+        <c:if test="${not empty error}">
+            <div class="errorblock">
+                Your login attempt was not successful, try again.<br /> Caused :
+                    ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+            </div>
+        </c:if>
 
-        </form:form>
-
+        <form class="form-horizontal" action="<c:url value='j_spring_security_check' />" method='POST'>
+            <div class="form-group">
+                <div class="col-lg-10">
+                    <legend >Please Sign In</legend>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="username" class="col-lg-2 control-label">Username</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" name='j_username' id="username" placeholder="Username">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-lg-2 control-label">Password</label>
+                <div class="col-lg-10">
+                    <input type="password" name='j_password' class="form-control" id="password" placeholder="Password">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                    <button type="submit" class="btn btn-default">Sign in</button>
+                    <a href="/registration" class="btn btn-default">Registration</a>
+                </div>
+            </div>
+        </form>
     </body>
 </html>
