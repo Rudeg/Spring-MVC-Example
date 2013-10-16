@@ -19,7 +19,7 @@ public class PostServiceImpl implements PostService {
     @Override
     @Transactional(readOnly = false)
     public void savePost(Post post) {
-        postDao.savePost(post);
+        postDao.saveOrUpdate(post);
     }
 
     @Override
