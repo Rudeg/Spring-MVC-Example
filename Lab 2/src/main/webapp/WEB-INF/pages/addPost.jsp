@@ -27,11 +27,11 @@
             </div>
             <div class="form-group">
                 <label for="title" class="control-label">Title</label>
-                <input type="text" class="form-control add-post" name="title" id="title" placeholder="Title">
+                <input type="text" class="form-control add-post" name="title" id="title" placeholder="Title" required="required">
             </div>
             <div class="form-group">
                 <label for="text" class="control-label">Text</label>
-                <textarea name="text" class="form-control add-post" id="text" placeholder="Text" ></textarea>
+                <textarea name="text" class="form-control add-post" id="text" placeholder="Text" required="required"></textarea>
             </div>
             <br/>
             <div class="form-group">
