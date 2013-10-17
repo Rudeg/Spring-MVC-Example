@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.HtmlUtils;
 
 import java.security.Principal;
 import java.util.HashSet;
@@ -62,6 +63,9 @@ public class MainController {
     public String addComment( @ModelAttribute("comment") Comment comment,
                            @RequestParam(required = false, value = "postId") String postId,
                            Model m, Principal principal) {
+        comment.setText(HtmlUtils.htmlEscape(comment.getText()));
+        comment.setTitle(HtmlUtils.htmlEscape(comment.getTitle()));
+
         String name = principal.getName();
         m.addAttribute("username", name);
         //set user to post
@@ -101,6 +105,9 @@ public class MainController {
 
     @RequestMapping(value = "/addPost", method = RequestMethod.POST)
     public String addComment( @ModelAttribute("post") Post post, BindingResult result, Model m, Principal principal) {
+        post.setText(HtmlUtils.htmlEscape(post.getText()));
+        post.setTitle(HtmlUtils.htmlEscape(post.getTitle()));
+
         String name = principal.getName();
         m.addAttribute("username", name);
         //set user to post

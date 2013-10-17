@@ -35,10 +35,10 @@
         <form action="/addComment" method="POST">
             <input type="hidden" value="${post.id}" name="postId">
             <div class="form-group">
-                <input type="text" class="form-control add-comment" name="title" id="title" placeholder="Title">
+                <input type="text" class="form-control add-comment" name="title" id="title" placeholder="Title" required="required">
             </div>
             <div class="form-group">
-                <textarea name="text" class="form-control add-comment" id="text" placeholder="Text" ></textarea>
+                <textarea name="text" class="form-control add-comment" id="text" placeholder="Text" required="required"></textarea>
             </div>
             <br/>
             <div class="form-group">

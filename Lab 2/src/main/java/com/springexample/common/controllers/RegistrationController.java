@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.HtmlUtils;
 
 import java.util.*;
 
@@ -59,13 +60,13 @@ public class RegistrationController {
         u.setPasswordHash(databasePasswordSecurerBean.secureUser(user, user.getPassword()));
         u.setComments(user.getComments());
         u.setCountry(user.getCountry());
-        u.setFirstname(user.getFirstname());
-        u.setLastname(user.getLastname());
+        u.setFirstname(HtmlUtils.htmlEscape(user.getFirstname()));
+        u.setLastname(HtmlUtils.htmlEscape(user.getLastname()));
         u.setPosts(user.getPosts());
         u.setProgLang(user.getProgLang());
         u.setReceiveNewsLetter(user.getReceiveNewsLetter());
         u.setSex(user.getSex());
-        u.setUsername(user.getUsername());
+        u.setUsername(HtmlUtils.htmlEscape(user.getUsername()));
         u.setId(user.getId());
 
         u.setUserRoles(roles);
